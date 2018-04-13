@@ -21,7 +21,7 @@ class PyAdb(object):
 
         cmd = 'pm list packages'
         ret = adb.adb_shell(cmd, self.__dev_name)
-        return ret.replace('package:', '').split("\n"")
+        return ret.replace('package:', '').split("\n")
 
     def install_apk(self, path, package_name):
         if not self.is_connected():
