@@ -9,7 +9,7 @@ class PyAdb(object):
 
     def is_connected(self):
         ret = adb.adb_devices()
-        pattern = self.__dev_name + "\s"
+        pattern = self.__dev_name + '\s'
         r = re.search(pattern, ret)
         if r:
             return True
@@ -19,16 +19,16 @@ class PyAdb(object):
         if not self.is_connected():
             return None
 
-        cmd = "pm list packages"
+        cmd = 'pm list packages'
         ret = adb.adb_shell(cmd, self.__dev_name)
-        return ret.replace("package:", "").split("\n")
+        return ret.replace('package:', '').split("\n"")
 
     def install_apk(self, path, package_name):
         if not self.is_connected():
             return False
 
         if not os.path.exists(path):
-            print("file " + path + " is not exist")
+            print('file ' + path + ' is not exist')
             return False
 
         adb.adb_install(path, self.__dev_name)
